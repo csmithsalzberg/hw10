@@ -1,5 +1,5 @@
 //Caleb Smith-Salzberg, Vivien Lee
-//Team CaLeeb 
+//Team caLeeb 
 //SoftDev2 pd7
 //K10 -- Objectification
 //2018-03-08
