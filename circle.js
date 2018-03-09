@@ -1,8 +1,8 @@
-//Caleb Smith-Salzberg, Naotaka Kinoshita
-//Team callMeNao 
+//Caleb Smith-Salzberg, Vivien Lee
+//Team CaLeeb 
 //SoftDev2 pd7
-//K9 -- Ask Circles [Change || Die]
-//2018-03-06
+//K10 -- Objectification
+//2018-03-08
 var pic = document.getElementById("vimage");
 var btn = document.getElementById("clear");
 
@@ -24,24 +24,6 @@ var clearRect = function() {
 var draw = function(e) {
     makeDot(e.offsetX, e.offsetY).display();
 };
-
-
-var change = function() {
-    if (this.getcolor() == "red") {
-	console.log("green");
-	this.setcolor("green");
-	this.stopPropagation();
-    }
-    else if (this.getAttribute("fill") == "green") {
-	this.remove();
-	stopPropagation();
-	drawCircle(Math.floor(Math.random() * pic.getAttribute("width")), Math.floor(Math.random() * pic.getAttribute("height")));
-    }
-};
-
-pic.addEventListener("click", draw);
-btn.addEventListener("click", clearRect);
-
 
 var makeDot = function(x,y){
     var dot = document.createElementNS("http://www.w3.org/2000/svg","circle");
@@ -70,8 +52,26 @@ var makeDot = function(x,y){
 	return dot.getAttribute("fill");
     };
 
-    dot.addEventListener("click",change);
+    dot.addEventListener("click", change, true);
 
     return dot;
 };
+
+var change = function(e) {
+    if (this.getcolor() == "red") {
+	console.log("green");
+	this.setcolor("green");
+	e.stopPropagation();
+    }
+    else if (this.getcolor() == "green") {
+	this.remove();
+	e.stopPropagation();
+	makeDot(Math.floor(Math.random() * pic.getAttribute("width")), Math.floor(Math.random() * pic.getAttribute("height"))).display();
+    }
+};
+
+pic.addEventListener("click", draw);
+btn.addEventListener("click", clearRect);
+
+
 
